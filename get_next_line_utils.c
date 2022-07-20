@@ -6,13 +6,13 @@
 /*   By: blefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 16:18:39 by blefebvr          #+#    #+#             */
-/*   Updated: 2022/07/12 17:34:04 by blefebvr         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:40:05 by blefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
@@ -98,7 +98,7 @@ static char	*join_line(char *line, char *stash)
 	ft_strcat(joined, line);
 	ft_strcat(joined, stash);
 	return (joined);
-}*/
+}
 
 int main()
 {

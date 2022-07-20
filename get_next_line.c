@@ -6,17 +6,17 @@
 /*   By: blefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 09:32:13 by blefebvr          #+#    #+#             */
-/*   Updated: 2022/07/12 18:18:22 by blefebvr         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:39:51 by blefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 // ssize_t read(int fd, void *buf, size_t nbyte);
 
 #include "get_next_line.h"
 
-static void	free(void *ptr)
+/*static void	free(void *ptr)
 {
-
-}
+	
+}*/
 
 static char	*read_line(int fd)
 {
@@ -30,18 +30,12 @@ static char	*read_line(int fd)
 	if (!buffer)
 		return (NULL);
 	reader = read(fd, buffer, BUFFER_SIZE);
-	while (reader != 0)
-	{
-		stash[i] = buffer[i];
-		i++; 
-		reader--;
-	}
-	stash[i] = '\0';
+	if (!find_sep(buffer)
 	free(buffer);
 	return (stash);
 }
 
-static char	*get_line(char *line, static char *stash)
+/*static char	*get_line(char *line, static char *stash)
 {
 	size_t	i;
 	size_t	j;
@@ -111,21 +105,35 @@ char	*get_next_line(int fd)
 	}
 	if (
 	return (line);
-}
+}*/
 
-/*int	main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int	fd;
-	char	*line;
+	char	line[30];
 
 	(void)argc;
 	fd = open(argv[1], O_RDONLY);
-	line = "";
-	while (line != NULL)
-	{
-		line = get_next_line(fd);
-		printf("%s", line);
-	}
+	//while (line != NULL)
+	//{
+	line = read_line(fd);
+	printf("%s", line);
+	//}
 	fd = close(fd);
 	return (0);
+}
+
+/*int main(int argc, char **argv)
+{
+	int reader;
+	int fd;
+	char buff[25];
+
+	(void)argc;
+	fd = open(argv[1], O_RDONLY);
+	reader = read(fd, buff, BUFFER_SIZE);
+	printf("%d\n", reader);
+	printf("%s\n", buff);
+
+	return 0;
 }*/
