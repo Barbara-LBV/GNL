@@ -6,7 +6,7 @@
 /*   By: blefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 09:32:13 by blefebvr          #+#    #+#             */
-/*   Updated: 2022/07/20 18:39:51 by blefebvr         ###   ########.fr       */
+/*   Updated: 2022/07/21 17:19:42 by blefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 // ssize_t read(int fd, void *buf, size_t nbyte);
@@ -18,24 +18,44 @@
 	
 }*/
 
-static char	*read_line(int fd)
+char	*read_line(int fd)
 {
 	ssize_t	reader;
 	static char	*stash;
 	char	*buffer;
-	size_t	i;
+	ssize_t	i;
 
-	i = 0;
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
 	reader = read(fd, buffer, BUFFER_SIZE);
-	if (!find_sep(buffer)
+	i = 0;
+	if (reader != 0)
+	{
+		while (i < reader)
+		{
+			stash[i] = buffer[i];
+			i++;
+		}
+	}
+	if (reader == 0)
+	{
+		buffer = NULL;
+		stash = buffer;
+	}
 	free(buffer);
 	return (stash);
 }
 
-/*static char	*get_line(char *line, static char *stash)
+char	*check_stash(static char *stash)
+{
+	if (!find_sep(stash))
+	{
+		
+	}
+}
+
+static char	*get_line(char *line, static char *stash)
 {
 	size_t	i;
 	size_t	j;
@@ -107,7 +127,7 @@ char	*get_next_line(int fd)
 	return (line);
 }*/
 
-int	main(int argc, char **argv)
+/*int	main(int argc, char **argv)
 {
 	int	fd;
 	char	line[30];
@@ -121,19 +141,33 @@ int	main(int argc, char **argv)
 	//}
 	fd = close(fd);
 	return (0);
-}
+}*/
 
-/*int main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	int reader;
+	//int reader;
 	int fd;
-	char buff[25];
+	//int i;
+	//int j;
+	static char *line;
+	//static char *stash;
+	//char buff[BUFFER_SIZE];
 
 	(void)argc;
 	fd = open(argv[1], O_RDONLY);
+	line = read_line(fd);
+	//i = 0;
+	/*j = 0;
 	reader = read(fd, buff, BUFFER_SIZE);
-	printf("%d\n", reader);
-	printf("%s\n", buff);
-
+	if (reader != 0)
+	{
+		while (i < reader)
+		{
+			line[i] = buff[i];
+			i++;
+		}
+	}
+	if (!find_sep(line))*/
+		printf("%s", line);
 	return 0;
-}*/
+}

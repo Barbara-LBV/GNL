@@ -6,13 +6,13 @@
 /*   By: blefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 16:18:39 by blefebvr          #+#    #+#             */
-/*   Updated: 2022/07/20 18:40:05 by blefebvr         ###   ########.fr       */
+/*   Updated: 2022/07/21 17:14:13 by blefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+/*size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-static char	*ft_strcat(const char *dest, const char *src)
+char	*ft_strcat(const char *dest, const char *src)
 {
 	size_t	i;
 	size_t	j;
@@ -43,22 +43,24 @@ static char	*ft_strcat(const char *dest, const char *src)
 	}
 	d[i] = '\0';
 	return ((char *)dest);
-}
+}*/
 
-static size_t	find_sep(char *stash)
+char	*find_sep(char *stash)
 {
+	char	*line;
 	size_t	i;
 
 	i = 0;
 	while (stash[i])
 	{
 		if (stash[i] == '\n')
-			return (1);
+			return (stash + i);
 		i++;
 	}
-	return (0);
+	return (stash);
 }
-static char	*get_remaining_stash(char *stash, char sep)
+
+/*char	*get_remaining_stash(char *stash, char sep)
 {
 	int	i;
 
@@ -77,7 +79,7 @@ static char	*get_remaining_stash(char *stash, char sep)
 	return (0);
 }
 
-static char	*join_line(char *line, char *stash)
+char	*join_line(char *line, char *stash)
 {
 	unsigned int	size;
 	char		*joined;
@@ -98,19 +100,22 @@ static char	*join_line(char *line, char *stash)
 	ft_strcat(joined, line);
 	ft_strcat(joined, stash);
 	return (joined);
-}
+}*/
 
 int main()
 {
 	//char s1[] = "Adam,";
-	char s2[] = "Salut \ntoi";
-	int i = 0;
+	char s2[] = "Salut toi";
+	char *stash;
+	//int i = 0;
 
-	while (s2[i] != '\n')
+	stash = find_sep(s2);
+	printf("%s\n", stash);
+	/*while (s2[i] != '\n')
 		i++;
 	printf("%d\n", i);
 	i += 1;
 	while (s2[i] != '\0')
-		write(1, &s2[i++], 1);
+		write(1, &s2[i++], 1);*/
 	return (0);
 }
