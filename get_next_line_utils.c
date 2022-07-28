@@ -6,7 +6,7 @@
 /*   By: blefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 16:18:39 by blefebvr          #+#    #+#             */
-/*   Updated: 2022/07/22 14:56:29 by blefebvr         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:26:59 by blefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,19 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strcat(const char *dest, const char *src)
+void	clean_var(char *var, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		var[i] = '\0';
+		i++;
+	}
+}
+
+/*char	*ft_strcat(const char *dest, const char *src)
 {
 	size_t	i;
 	size_t	j;
@@ -59,25 +71,6 @@ int	find_sep(char *stash)
 	return (0);
 }
 
-char	*get_remaining_stash(char *stash, char sep)
-{
-	int	i;
-
-	i = 0;
-	if (find_sep(stash))
-	{
-		while (stash[i] != '\0')
-		{
-			if (stash[i] == sep)
-				return (&stash[i + 1]);
-			i++;
-		}
-	}
-	else if (!find_sep(stash))
-		return (stash);
-	return (0);
-}
-
 char	*join_line(char *line, char *stash)
 {
 	unsigned int	size;
@@ -101,20 +94,22 @@ char	*join_line(char *line, char *stash)
 	return (joined);
 }
 
-/*int main()
+int main()
 {
 	//char s1[] = "Adam,";
 	char s2[] = "Salut \ntoi";
 	char *stash;
-	//int i = 0;
+	int i;
 
-	stash = find_sep(s2);
-	printf("%s\n", stash);
-	while (s2[i] != '\n')
-		i++;
-	printf("%d\n", i);
-	i += 1;
-	while (s2[i] != '\0')
-		write(1, &s2[i++], 1);
+	//stash = find_sep(s2);
+	//printf("%s\n", stash);
+	//while (s2[i] != '\n')
+	i = get_start(s2);;
+	printf("start = %d\n", i);
+	stash = get_remaining_stash(s2);
+	printf("remaining stash = %s\n", stash);
+	//i += 1;
+	//while (s2[i] != '\0')
+	//	write(1, &s2[i++], 1);
 	return (0);
 }*/

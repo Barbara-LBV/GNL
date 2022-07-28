@@ -6,7 +6,7 @@
 /*   By: blefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 09:23:33 by blefebvr          #+#    #+#             */
-/*   Updated: 2022/07/22 14:57:04 by blefebvr         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:47:00 by blefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 # include <string.h>
 # include <fcntl.h>
 
+char	*get_next_line(int fd);
+char	*get_cur_line(int fd, ssize_t reader, char *stash, char *tmp);
+char	*get_line(char *tmp);
+void	clean_var(char *tmp, int size);
+void	get_remaining_stash(char *stash);
 size_t	ft_strlen(const char *s);
-char	*ft_strcat(const char *dest, const char *src);
-int	find_sep(char *stash);
-char	*get_remaining_stash(char *stash, char sep);
-char	*join_line(char *line, char *stash);
 
 #endif
