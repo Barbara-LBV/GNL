@@ -6,7 +6,7 @@
 /*   By: blefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 09:32:13 by blefebvr          #+#    #+#             */
-/*   Updated: 2022/07/29 15:07:51 by blefebvr         ###   ########.fr       */
+/*   Updated: 2022/07/29 18:52:40 by blefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ void	get_remaining_stash(char *stash)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	char		tmp[8379979];
+	char		tmp[1000000];
 	static char	stash[BUFFER_SIZE];
 	ssize_t		reader;
 
-	clean_var(tmp, 8379979);
-	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
+	clean_var(tmp, 1000000);
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	reader = 0;
 	if (stash[0] == '\0')
@@ -109,7 +109,7 @@ char	*get_next_line(int fd)
 	get_remaining_stash(stash);
 	return (line);
 }
-
+/*
 int main()
 {
 	int fd;
@@ -118,6 +118,8 @@ int main()
 
 	l = 0;
 	fd = open("test_fd", O_RDONLY);
+	if (fd < 0)
+		printf("Error !");
 	while ((line = get_next_line(fd)) != NULL)
 	{
 		++l;
@@ -125,4 +127,4 @@ int main()
 		free(line);
 	}
 	return (0);
-}
+}*/
