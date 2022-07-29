@@ -6,7 +6,7 @@
 /*   By: blefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 16:18:39 by blefebvr          #+#    #+#             */
-/*   Updated: 2022/07/29 14:44:24 by blefebvr         ###   ########.fr       */
+/*   Updated: 2022/07/29 12:51:30 by blefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-void	clean_var(char *var, size_t size)
+void	clean_var(char *var, int size)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < size)
